@@ -71,6 +71,14 @@ class _ReasonsViewState extends State<ReasonsView> {
                         return AnimatedContainer(
                           duration: const Duration(milliseconds: 400),
                           decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 4.r,
+                                    color: reasonList[index].isSelected
+                                        ? AppColors.green.withOpacity(0.5)
+                                        : AppColors.cardShadow,
+                                    offset: const Offset(4, 4))
+                              ],
                               color: reasonList[index].isSelected
                                   ? AppColors.green
                                   : AppColors.white,

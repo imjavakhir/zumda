@@ -11,18 +11,24 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
   final bool isHasBack;
   final VoidCallback? onTapBack;
   final Widget? leading;
-  const AppBarWidget({
-    super.key,
-    this.isHasBack = false,
-    this.title = '',
-    this.actions,
-    this.leading,
-    this.onTapBack,
-  });
+  final bool centerTitle;
+  final Color backgroundColor;
+
+  const AppBarWidget(
+      {super.key,
+      this.isHasBack = false,
+      this.title = '',
+      this.actions,
+
+      this.leading,
+      this.onTapBack,
+      this.backgroundColor = AppColors.backgroundColor,
+      this.centerTitle = true});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+     
       leading: isHasBack
           ? IconButton(
               enableFeedback: false,
@@ -35,8 +41,8 @@ class AppBarWidget extends StatelessWidget implements PreferredSize {
           : leading,
       actions: actions,
       elevation: 0,
-      centerTitle: true,
-      backgroundColor: AppColors.backgroundColor,
+      centerTitle: centerTitle,
+      backgroundColor: backgroundColor,
       automaticallyImplyLeading: false,
       title: Text(
         title,

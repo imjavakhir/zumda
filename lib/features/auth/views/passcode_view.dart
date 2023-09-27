@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zumda/features/auth/components/passcode_component.dart';
+import 'package:zumda/router/app_router.dart';
 import 'package:zumda/shared/appbar_widget.dart';
 import 'package:zumda/shared/filled_app_button.dart';
 import 'package:zumda/theme/app_text_styles.dart';
@@ -51,7 +52,7 @@ class PasscodeView extends StatelessWidget {
       floatingActionButton: FilledAppButton(
           buttonName: 'Create passcode',
           onTap: () {
-            // context.goNamed(RouteNames.fingerPrint);
+            context.goNamed(RouteNames.global);
           }),
     );
   }
