@@ -30,17 +30,18 @@ class HomeView extends StatelessWidget {
         children: [
           Container(
             height: 244.h,
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                  blurRadius: 8.r,
-                  color: AppColors.cardShadow,
-                  offset: const Offset(0, 8))
-            ]),
+            decoration: const BoxDecoration(boxShadow: []),
             width: double.maxFinite,
             child: PageView.builder(
               itemCount: 4,
               itemBuilder: (context, index) => Container(
                 decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 4.r,
+                          color: AppColors.primaryColor.withOpacity(0.5),
+                          offset: const Offset(0, 4))
+                    ],
                     borderRadius: BorderRadius.circular(16.r),
                     color: AppColors.green),
                 margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),

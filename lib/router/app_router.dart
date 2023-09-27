@@ -11,7 +11,7 @@ import 'package:zumda/features/global/views/global_view.dart';
 import 'package:zumda/features/onboarding/views/onboarding_view.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
-  return GoRouter(initialLocation: RoutePaths.global, routes: [
+  return GoRouter(initialLocation: RoutePaths.onboarding, routes: [
     GoRoute(
       path: RoutePaths.onboarding,
       name: RouteNames.onboarding,
