@@ -15,6 +15,11 @@ abstract class AppIcons {
   static const String fingerMenu = 'assets/icons/finger_menu.svg';
   static const String notification = 'assets/icons/notification.svg';
   static const String wifi = 'assets/icons/wifi.svg';
+  static const String cardAdd = 'assets/icons/card_add.svg';
+  static const String elementAdd = 'assets/icons/element_plus.svg';
+  static const String moneySend = 'assets/icons/money_send.svg';
+  static const String moneyReceive = 'assets/icons/money_receive.svg';
+  static const String transfer = 'assets/icons/transfer.svg';
 
   static const Map<String, dynamic> bottomNavigationItems = {
     'Home': {'inactive': home, 'active': home},

@@ -7,6 +7,7 @@ import 'package:zumda/features/auth/views/passcode_view.dart';
 import 'package:zumda/features/auth/views/reasons_view.dart';
 import 'package:zumda/features/auth/views/sign_in_view.dart';
 import 'package:zumda/features/auth/views/sign_up_view.dart';
+import 'package:zumda/features/cards/views/add_card_view.dart';
 import 'package:zumda/features/global/views/global_view.dart';
 import 'package:zumda/features/onboarding/views/onboarding_view.dart';
 
@@ -20,6 +21,13 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     GoRoute(
       path: RoutePaths.global,
       name: RouteNames.global,
+      routes: [
+        GoRoute(
+          path: RoutePaths.addCard,
+          name: RouteNames.addCard,
+          builder: (context, state) => const AddCardView(),
+        ),
+      ],
       builder: (context, state) => const GlobalView(),
     ),
     GoRoute(
@@ -82,6 +90,7 @@ abstract class RouteNames {
   static const reasons = 'reasons';
   static const passcode = 'passcode';
   static const global = 'global';
+  static const addCard = 'addCard';
 }
 
 abstract class RoutePaths {
@@ -95,4 +104,5 @@ abstract class RoutePaths {
   static const reasons = 'reasons';
   static const passcode = 'passcode';
   static const global = '/global';
+  static const addCard = 'addCard';
 }

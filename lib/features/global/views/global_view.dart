@@ -24,9 +24,10 @@ class _GlobalViewState extends State<GlobalView> {
         body: _globalPages[select],
         // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         // floatingActionButton: FloatingActionButton(
+        //   highlightElevation: 1,
         //   enableFeedback: false,
         //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        //   elevation: 0.5,
+        //   elevation: 1,
         //   backgroundColor: AppColors.green,
         //   onPressed: () {},
         //   child: SvgPicture.asset(

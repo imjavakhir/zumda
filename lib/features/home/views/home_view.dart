@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:zumda/features/auth/components/textbutton_widget.dart';
+import 'package:zumda/features/home/components/credit_card.dart';
+import 'package:zumda/features/home/components/home_menu_item.dart';
 import 'package:zumda/shared/appbar_widget.dart';
 import 'package:zumda/theme/app_colors.dart';
 import 'package:zumda/theme/app_icons.dart';
-import 'package:zumda/theme/app_images.dart';
 import 'package:zumda/theme/app_text_styles.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,6 +16,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(
+        title: 'Zumda',
         actions: [
           IconButton(
               splashRadius: 24.r,
@@ -29,144 +32,111 @@ class HomeView extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 244.h,
+            height: 224.h,
             decoration: const BoxDecoration(boxShadow: []),
             width: double.maxFinite,
             child: PageView.builder(
               itemCount: 4,
-              itemBuilder: (context, index) => Container(
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: 4.r,
-                          color: AppColors.primaryColor.withOpacity(0.5),
-                          offset: const Offset(0, 4))
-                    ],
-                    borderRadius: BorderRadius.circular(16.r),
-                    color: AppColors.green),
-                margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20.w,
-                        ),
-                        child: Image.asset(
-                          index % 2 == 0
-                              ? AppImages.visa
-                              : AppImages.mastercard,
-                          height: 48.h,
-                        ),
-                      ),
-                    ),
-                    const Spacer(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Text(
-                          //   'Balance: \$15800 ',
-                          //   style: AppTextStyles.labelStyle3.copyWith(
-                          //       color: AppColors.white,
-                          //       fontFamily: AppTextStyles.satoshiBold),
-                          // ),
-                          Row(
-                            children: [
-                              Image.asset(
-                                AppImages.chip,
-                                height: 32.h,
-                              ),
-                              ScreenUtil().setHorizontalSpacing(4),
-                              Transform.rotate(
-                                  angle: 1.6,
-                                  child: SvgPicture.asset(
-                                    AppIcons.wifi,
-                                    height: 28.h,
-                                    width: 28.h,
-                                    colorFilter: const ColorFilter.mode(
-                                        AppColors.white, BlendMode.srcIn),
-                                  ))
-                            ],
-                          ),
-                          ScreenUtil().setVerticalSpacing(4),
-                          Text(
-                            '2564  ****  ****  1121',
-                            style: AppTextStyles.labelStyle2.copyWith(
-                                color: AppColors.white,
-                                fontFamily: AppTextStyles.satoshiBold),
-                          )
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.w,
-                      ),
-                      height: 80,
-                      decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(16.r),
-                              bottomRight: Radius.circular(16.r))),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Card name',
-                                style: AppTextStyles.labelStyle7.copyWith(
-                                    color: AppColors.white,
-                                    fontFamily: AppTextStyles.satoshiReg),
-                              ),
-                              Text(
-                                'SQB',
-                                style: AppTextStyles.labelStyle6.copyWith(
-                                    color: AppColors.white,
-                                    fontFamily: AppTextStyles.satoshiBold),
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Expires',
-                                style: AppTextStyles.labelStyle7.copyWith(
-                                    color: AppColors.white,
-                                    fontFamily: AppTextStyles.satoshiReg),
-                              ),
-                              Text(
-                                '01/27',
-                                style: AppTextStyles.labelStyle6.copyWith(
-                                    color: AppColors.white,
-                                    fontFamily: AppTextStyles.satoshiBold),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+              itemBuilder: (context, index) => CreditCardComponent(
+                index: index,
               ),
             ),
-          )
+          ),
+          ScreenUtil().setVerticalSpacing(12),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+            margin: EdgeInsets.symmetric(horizontal: 16.w),
+            height: 80.h,
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16.r),
+                color: AppColors.white),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(
+                  menuItemsInfoList.length,
+                  (index) => HomeMenuItem(
+                        title: menuItemsInfoList.keys.elementAt(index),
+                        iconPath: menuItemsInfoList.values.elementAt(index),
+                      )),
+            ),
+          ),
+          ScreenUtil().setVerticalSpacing(24),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Today, Oct 13',
+                  style: AppTextStyles.labelStyle6
+                      .copyWith(fontFamily: AppTextStyles.satoshiBold),
+                ),
+                const Spacer(),
+                TextButtonWidget(
+                  onTap: () {},
+                  buttonName: 'All transactions',
+                  paddingW: 0,
+                ),
+                ScreenUtil().setVerticalSpacing(16),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+                  onTap: () {},
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.h)),
+                  leading: Container(
+                    alignment: Alignment.center,
+                    height: 48.h,
+                    width: 48.h,
+                    decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(8.r)),
+                    child: SvgPicture.asset(
+                      AppIcons.moneyReceive,
+                      height: 24.h,
+                      width: 24.h,
+                      colorFilter: const ColorFilter.mode(
+                          AppColors.black, BlendMode.srcIn),
+                    ),
+                  ),
+                  trailing: Text(
+                    '+\$2890',
+                    style: AppTextStyles.labelStyle6.copyWith(
+                        fontFamily: AppTextStyles.satoshiBold,
+                        color: AppColors.green),
+                  ),
+                  title: Text(
+                    'Bank of America',
+                    style: AppTextStyles.labelStyle6
+                        .copyWith(fontFamily: AppTextStyles.satoshiMed),
+                  ),
+                  subtitle: Text(
+                    'Deposit',
+                    style: AppTextStyles.labelStyle7
+                        .copyWith(fontFamily: AppTextStyles.satoshiReg),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
   }
 }
+
+Map<String, dynamic> menuItemsInfoList = {
+  'Deposit': AppIcons.moneyReceive,
+  'Transfers': AppIcons.transfer,
+  'Withdraw': AppIcons.moneySend,
+  'More': AppIcons.elementAdd
+};
