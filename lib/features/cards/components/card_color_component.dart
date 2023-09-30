@@ -1,13 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:zumda/features/home/components/credit_card.dart';
-import 'package:zumda/shared/appbar_widget.dart';
-import 'package:zumda/shared/filled_app_button.dart';
-import 'package:zumda/shared/textfiel_widget.dart';
 import 'package:zumda/theme/app_colors.dart';
-import 'package:zumda/theme/app_text_styles.dart';
 
 class CardColorComponent extends StatelessWidget {
   final bool isSelected;
